@@ -22,6 +22,6 @@ go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest ;
 
 sudo mv ~/go/bin/httpx /usr/local/bin/ ;
 
-sudo cp subtron /usr/local/bin ;
+sudo cp subtron /usr/local/bin &
  
 echo "[-] INSTALLED NOW YOU CAN USE SUBTRON " ;
