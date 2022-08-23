@@ -3,7 +3,7 @@ Let the subtron do the subdomain enumeration for you with amass, assetfinder and
 
 ## Installation:
 ```
-git clone
+git clone https://github.com/cyberatull/subtron.git
 ```
 ```
 chmod +x setup subtron
