@@ -1,0 +1,47 @@
+echo ""
+echo "                                                                                    
+░██████╗██╗░░░██╗██████╗░████████╗██████╗░░█████╗░███╗░░██╗
+██╔════╝██║░░░██║██╔══██╗╚══██╔══╝██╔══██╗██╔══██╗████╗░██║
+╚█████╗░██║░░░██║██████╦╝░░░██║░░░██████╔╝██║░░██║██╔██╗██║
+░╚═══██╗██║░░░██║██╔══██╗░░░██║░░░██╔══██╗██║░░██║██║╚████║
+██████╔╝╚██████╔╝██████╦╝░░░██║░░░██║░░██║╚█████╔╝██║░╚███║
+╚═════╝░░╚═════╝░╚═════╝░░░░╚═╝░░░╚═╝░░╚═╝░╚════╝░╚═╝░░╚══╝  "
+echo "     Follow Me On: 🕊️@cyberatul  😼@cyberatull"
+echo ""
+
+
+sleep 2
+
+amass enum -silent -noalts -nolocaldb -d $1 -min-for-recursive 7 -passive -o 1.txt > /dev/null &
+echo "[+] Starting Amass" ;
+amass enum -silent -noalts -nolocaldb -d $1 -min-for-recursive 7 -brute -o 2.txt > /dev/null &
+echo "[+] Starting Amass Brute" ;
+subfinder -d $1 -silent -nC -nW -o 3.txt -t 100 > /dev/null > /dev/null &
+echo "[+] Starting Subfinder" &
+echo $1 | assetfinder --subs-only | tee -a 4.txt > /dev/null &
+echo "[+] Starting Assetfinder" &
+amass enum -silent -noalts -nolocaldb -d $1 -min-for-recursive 7  -o 5.txt > /dev/null &
+wait;
+
+echo ""
+echo "[=] Finished Amass"
+echo "[=] Finished Subfinder"
+echo "[=] Finished Assetfinder"
+echo ""
+
+sort 1.txt 2.txt 3.txt 4.txt 5.txt | uniq | tee -a domains.txt > /dev/null;
+
+cat domains.txt | httpx -silent -t 100 -o final.txt > /dev/null &
+echo "[+] Starting Httpx" &
+
+echo ""
+echo "[=] Finished Httpx" &
+
+rm 1.txt 2.txt 3.txt 4.txt 5.txt 
+echo "[+] Cleaning"
+
+sleep 2
+
+echo ""
+echo "[+] ALL DONE!!!"
+echo ""
