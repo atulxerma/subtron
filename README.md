@@ -1,5 +1,5 @@
 ## subtron
-Let the subtron do the subdomain enumeration for you at once with subfinder, assetfinder and with amass.
+Let the subtron do the subdomain enumeration for you with subfinder, assetfinder and with amass at once.
 
 ## Installation:
 ```
