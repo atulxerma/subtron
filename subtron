@@ -6,7 +6,8 @@ echo "
 ░╚═══██╗██║░░░██║██╔══██╗░░░██║░░░██╔══██╗██║░░██║██║╚████║
 ██████╔╝╚██████╔╝██████╦╝░░░██║░░░██║░░██║╚█████╔╝██║░╚███║
 ╚═════╝░░╚═════╝░╚═════╝░░░░╚═╝░░░╚═╝░░╚═╝░╚════╝░╚═╝░░╚══╝  "
-echo "     Follow Me On: 🕊️@cyberatul  😼@cyberatull"
+echo "     Follow Me On Github:  🕊️@cyberatul  😼@cyberatull"
+echo "     Don't forget to star "
 echo ""
 
 
@@ -43,5 +44,5 @@ echo "[+] Cleaning"
 sleep 2
 
 echo ""
-echo "[+] ALL DONE!!!"
+echo "[+] Finished!!!"
 echo ""
