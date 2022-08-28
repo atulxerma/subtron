@@ -1,3 +1,12 @@
+PURPLE='\033[1;30m'
+RED='\033[1;31m'
+GREEN='\033[1;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[1;34m'
+PINK='\033[1;35m'
+LBLUE='\033[1;36m'
+WHITE='\033[1;37m'
+
 echo ""
 echo "                                                                                    
 ░██████╗██╗░░░██╗██████╗░████████╗██████╗░░█████╗░███╗░░██╗
@@ -12,34 +21,16 @@ echo ""
 
 
 sleep 2
+printf "\n\n${WHITE}[!] Enter domain to Enumerate : "
+read -r url
 
-amass enum -silent -noalts -nolocaldb -d $1 -min-for-recursive 7 -passive -o 1.txt > /dev/null &
-echo "[+] Starting Amass" ;
-amass enum -silent -noalts -nolocaldb -d $1 -min-for-recursive 7 -brute -o 2.txt > /dev/null &
-echo "[+] Starting Amass Brute" ;
-subfinder -d $1 -silent -nC -nW -o 3.txt -t 100 > /dev/null > /dev/null &
-echo "[+] Starting Subfinder" &
-echo $1 | assetfinder --subs-only | tee -a 4.txt > /dev/null &
-echo "[+] Starting Assetfinder" &
-amass enum -silent -noalts -nolocaldb -d $1 -min-for-recursive 7  -o 5.txt > /dev/null &
-wait;
+printf "${BLUE}\n[*] Subdomain Enumeration started!\n"
 
-echo ""
-echo "[=] Finished Amass"
-echo "[=] Finished Subfinder"
-echo "[=] Finished Assetfinder"
-echo ""
+printf "${GREEN}\n[+] Enumerating subdomains ..."
+curl -s "https://crt.sh/?q=$url" | grep -Po "(([\w.-]*)\.([\w]*)\.([A-z]))\w+" | sort -u > sub1
 
-sort 1.txt 2.txt 3.txt 4.txt 5.txt | uniq | tee -a domains.txt > /dev/null;
-
-cat domains.txt | httpx -silent -t 100 -o final.txt > /dev/null &
-echo "[+] Starting Httpx" &
-
-echo ""
-echo "[=] Finished Httpx" &
-
-rm 1.txt 2.txt 3.txt 4.txt 5.txt 
-echo "[+] Cleaning"
+sort sub1  | uniq | tee $url-subdomains
+rm sub*
 
 sleep 2
 
