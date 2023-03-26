@@ -8,4 +8,4 @@ sudo mv ~/go/bin/httpx /usr/local/bin/ ;
 
 sudo cp subtron /usr/local/bin &
  
-echo "[-] INSTALLED NOW YOU CAN USE SUBTRON " ;
+echo "[-] INSTALLED " ;
