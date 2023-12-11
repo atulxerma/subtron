@@ -9,7 +9,10 @@ What sets Subtron apart is its integration with HTTPX, enabling real-time testin
 git clone https://github.com/atulxerma/subtron.git
 ```
 ```
-chmod +x setup subtron
+cd subtron
+```
+```
+chmod +x **
 ```
 ```
 bash setup
