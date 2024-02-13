@@ -11,10 +11,10 @@ echo ""
 
 
 sleep 2
-
-amass enum -silent -noalts -nolocaldb -d $1 -min-for-recursive 7 -passive -o 1.txt > /dev/null &
+amass enum -silent -no-alts -nolocaldb -d $1 -min-for-recursive 7 -passive -o 1.txt > /dev/null &
 echo "[+] Starting Amass" ;
-amass enum -silent -noalts -nolocaldb -d $1 -min-for-recursive 7 -brute -o 2.txt > /dev/null &
+amass enum -silent -no-alts -nolocaldb -d $1 -min-for-recursive 7 -brute -o 2.txt > /dev/null &
+
 echo "[+] Starting Amass Brute" ;
 subfinder -d $1 -silent -nC -nW -o 3.txt -t 100 > /dev/null > /dev/null &
 echo "[+] Starting Subfinder" &
