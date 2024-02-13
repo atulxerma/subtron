@@ -11,16 +11,16 @@ echo ""
 
 
 sleep 2
-amass enum -silent -no-alts -nolocaldb -d $1 -min-for-recursive 7 -passive -o 1.txt > /dev/null &
+amass enum -silent -d $1 -min-for-recursive 7 -passive -o 1.txt > /dev/null &
 echo "[+] Starting Amass" ;
-amass enum -silent -no-alts -nolocaldb -d $1 -min-for-recursive 7 -brute -o 2.txt > /dev/null &
+amass enum -silent -d $1 -min-for-recursive 7 -brute -o 2.txt > /dev/null &
 
 echo "[+] Starting Amass Brute" ;
 subfinder -d $1 -silent -nC -nW -o 3.txt -t 100 > /dev/null > /dev/null &
 echo "[+] Starting Subfinder" &
 echo $1 | assetfinder --subs-only | tee -a 4.txt > /dev/null &
 echo "[+] Starting Assetfinder" &
-amass enum -silent -noalts -nolocaldb -d $1 -min-for-recursive 7  -o 5.txt > /dev/null &
+amass enum -silent -d $1 -min-for-recursive 7  -o 5.txt > /dev/null &
 wait;
 
 echo ""
