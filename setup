@@ -1,11 +1,62 @@
-echo "[+] SETTING UP..." &
+#!/bin/bash
+# Setup Script for Subdomain Enumeration Toolkit
+# Author: @atulxerma
 
-sudo apt install golang subfinder amass assetfinder -y;
+set -euo pipefail
 
-go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest ;
+GREEN="\033[0;32m"
+YELLOW="\033[1;33m"
+RED="\033[0;31m"
+RESET="\033[0m"
 
-sudo mv ~/go/bin/httpx /usr/local/bin/ ;
+echo -e "${GREEN}[+] SETTING UP...${RESET}"
 
-sudo cp subtron /usr/local/bin &
- 
-echo "[-] INSTALLED " ;
+# Update & install base packages
+echo -e "${YELLOW}[*] Installing dependencies (golang, jq, curl)...${RESET}"
+sudo apt update -y >/dev/null 2>&1
+sudo apt install -y golang jq curl git build-essential >/dev/null 2>&1
+
+# Install Amass
+if ! command -v amass &>/dev/null; then
+    echo -e "${YELLOW}[*] Installing Amass...${RESET}"
+    sudo apt install -y amass >/dev/null 2>&1
+else
+    echo -e "${GREEN}[✓] Amass already installed${RESET}"
+fi
+
+# Install Subfinder
+if ! command -v subfinder &>/dev/null; then
+    echo -e "${YELLOW}[*] Installing Subfinder...${RESET}"
+    go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest >/dev/null 2>&1
+    sudo mv ~/go/bin/subfinder /usr/local/bin/
+else
+    echo -e "${GREEN}[✓] Subfinder already installed${RESET}"
+fi
+
+# Install Assetfinder
+if ! command -v assetfinder &>/dev/null; then
+    echo -e "${YELLOW}[*] Installing Assetfinder...${RESET}"
+    go install -v github.com/tomnomnom/assetfinder@latest >/dev/null 2>&1
+    sudo mv ~/go/bin/assetfinder /usr/local/bin/
+else
+    echo -e "${GREEN}[✓] Assetfinder already installed${RESET}"
+fi
+
+# Install Httpx
+if ! command -v httpx &>/dev/null; then
+    echo -e "${YELLOW}[*] Installing Httpx...${RESET}"
+    go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest >/dev/null 2>&1
+    sudo mv ~/go/bin/httpx /usr/local/bin/
+else
+    echo -e "${GREEN}[✓] Httpx already installed${RESET}"
+fi
+
+# Install custom tool (subtron if available)
+if [ -f "./subtron" ]; then
+    echo -e "${YELLOW}[*] Installing Subtron...${RESET}"
+    sudo cp subtron /usr/local/bin/
+    sudo chmod +x /usr/local/bin/subtron
+    echo -e "${GREEN}[✓] Subtron installed${RESET}"
+fi
+
+echo -e "${GREEN}[-] INSTALLATION COMPLETE!${RESET}"
