@@ -1,32 +1,93 @@
-Welcome to Subtron, your go-to tool for comprehensive subdomain enumeration and live domain testing. Powered by a sophisticated combination of Subfinder, Amass, and Assetfinder, Subtron is designed to streamline identifying potential vulnerabilities within web domains. Leveraging the robust capabilities of these tools, Subtron conducts thorough subdomain enumeration swiftly and efficiently.
+# Subtron - Advanced Subdomain Enumeration Toolkit
 
-What sets Subtron apart is its integration with HTTPX, enabling real-time testing of live domains to uncover security loopholes. The tool meticulously analyzes live domains, capturing the findings and storing them in the 'final.txt' file for in-depth examination and further analysis.
+![banner](https://img.shields.io/badge/Subdomain%20Enum-Toolkit-green?style=for-the-badge)
+![status](https://img.shields.io/badge/Status-Stable-blue?style=for-the-badge)
 
+---
 
+## 🔍 About
+`Subtron` is an **automated subdomain enumeration script** written in **Bash**, built for bug hunters, penetration testers, and security researchers.  
 
-## Installation:
-```
+It combines multiple powerful tools:
+- [Amass](https://github.com/owasp-amass/amass)
+- [Subfinder](https://github.com/projectdiscovery/subfinder)
+- [Assetfinder](https://github.com/tomnomnom/assetfinder)
+- [Httpx](https://github.com/projectdiscovery/httpx)
+- `crt.sh` (certificate transparency logs)
+
+All results are deduplicated and stored neatly in `results/<domain>/`.
+
+---
+
+## ⚡ Features
+- Runs **multiple enumeration tools in parallel**  
+- **Silent mode** → only shows status messages, not noisy tool output  
+- Saves **unique domains** & **live hosts**  
+- Colorized output with progress messages  
+- Organized results per domain  
+
+---
+
+## 📦 Installation
+
+Clone the repository and run the setup script:
+
+```bash
 git clone https://github.com/atulxerma/subtron.git
-```
-```
 cd subtron
+chmod +x setup.sh
+./setup.sh
 ```
-```
-chmod +x **
-```
-```
-bash setup
-```
-no need to run the setup file if you have subfinder, assetfinder, amass and httpx already in your machine if yes skip bash setup and run:
-```
-sudo cp subtron /usr/local/bin
-```
+This installs:
 
-now you can use Subtron anywhere from the terminal
+golang
 
-## Usage:
-subtron target.com
+amass
 
-## Tip:
-config your amass config.ini file for better results
-https://github.com/OWASP/Amass/blob/master/examples/config.ini
+subfinder
+
+assetfinder
+
+httpx
+
+jq, curl
+
+Optional: your own custom subtron binary (if present)
+##🚀 Usage
+```
+chmod +x subtron.sh
+./subtron.sh example.com
+```
+##Example Output
+```
+[+] Target Domain: example.com
+[+] Output Folder: results/example.com
+[=] Scan Finished!
+[+] Unique domains saved to: results/example.com/domains.txt
+[+] Live hosts saved to: results/example.com/live_hosts.txt
+Total Domains Found: 342
+Live Hosts: 127
+```
+##📂 Results
+
+After running, you’ll find:
+```
+results/
+└── example.com/
+    ├── amass_passive.txt
+    ├── amass_brute.txt
+    ├── subfinder.txt
+    ├── assetfinder.txt
+    ├── crtsh.txt
+    ├── domains.txt       # merged + deduplicated subdomains
+    └── live_hosts.txt    # live hosts from httpx
+```
+##⚠️ Disclaimer
+
+This tool is for educational and authorized security testing only.
+The author is not responsible for misuse or illegal activities.
+
+##✨ Author
+
+Created by @atulxerma
+
