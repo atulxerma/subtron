@@ -38,7 +38,7 @@ cd subtron
 chmod +x setup.sh
 ./setup.sh
 ```
-This installs:
+# This installs:
 
 golang
 
@@ -49,16 +49,16 @@ subfinder
 assetfinder
 
 httpx
-
 jq, curl
 
-Optional: your own custom subtron binary (if present)
-##🚀 Usage
+---
+
+## 🚀 Usage
 ```
 chmod +x subtron.sh
 ./subtron.sh example.com
 ```
-##Example Output
+## Example Output
 ```
 [+] Target Domain: example.com
 [+] Output Folder: results/example.com
@@ -68,7 +68,7 @@ chmod +x subtron.sh
 Total Domains Found: 342
 Live Hosts: 127
 ```
-##📂 Results
+## 📂 Results
 
 After running, you’ll find:
 ```
@@ -82,12 +82,12 @@ results/
     ├── domains.txt       # merged + deduplicated subdomains
     └── live_hosts.txt    # live hosts from httpx
 ```
-##⚠️ Disclaimer
+## ⚠️ Disclaimer
 
 This tool is for educational and authorized security testing only.
 The author is not responsible for misuse or illegal activities.
 
-##✨ Author
+## ✨ Author
 
 Created by @atulxerma
 
