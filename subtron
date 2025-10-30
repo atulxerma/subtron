@@ -1,6 +1,6 @@
 #!/bin/bash
 # Advanced Subdomain Enumeration Script (Silent Mode)
-# Author: @atulxerma
+# Author:@atulxerma
 
 set -euo pipefail
 
@@ -19,7 +19,7 @@ ${GREEN}░██████╗██╗░░░██╗██████╗
 ██████╔╝╚██████╔╝██████╦╝░░░██║░░░██║░░██║╚█████╔╝██║░╚███║
 ╚═════╝░░╚═════╝░╚═════╝░░░░╚═╝░░░╚═╝░░╚═╝░╚════╝░╚═╝░░╚══╝  
 ${RESET}
-   Connect With Me:  ${YELLOW}@atulxerma${RESET}
+   Connect With Me: ${YELLOW}@atulxerma${RESET}
 "
 
 # Input validation
