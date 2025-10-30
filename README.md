@@ -35,8 +35,8 @@ Clone the repository and run the setup script:
 ```bash
 git clone https://github.com/atulxerma/subtron.git
 cd subtron
-chmod +x setup.sh
-./setup.sh
+chmod +x setup
+./setup
 ```
 # This installs:
 
@@ -55,8 +55,8 @@ jq, curl
 
 ## 🚀 Usage
 ```
-chmod +x subtron.sh
-./subtron.sh example.com
+chmod +x subtron
+subtron example.com
 ```
 ## Example Output
 ```
